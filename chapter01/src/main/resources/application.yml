@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: oracle
+    url: jdbc:mysql://${MYSQL_HOST:192.168.31.8}:3306/mysql
