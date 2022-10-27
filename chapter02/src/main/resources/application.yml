@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: oracle
+      jdbc-url: jdbc:mysql://${MYSQL_HOST:192.168.31.8}:3306/mysql
+      auto-commit: false
+      connection-test-query: SELECT 1
+logging:
+  level:
+    org:
+      springframework: WARN
+    com:
+      example:
+        springbootdemo:
+          mapper.*: DEBUG

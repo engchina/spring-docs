@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.mapper.TableInfoMapper">
+    <resultMap id="TableInfoResultMap" type="com.example.springbootdemo.entity.TableInfo">
+        <result column="column_name" jdbcType="VARCHAR" property="columnName"/>
+        <result column="column_type" jdbcType="VARCHAR" property="columnType"/>
+    </resultMap>
+
+    <select id="selectTableInfo" parameterType="map" resultMap="TableInfoResultMap">
+        select column_name,
+               column_type
+        from information_schema.columns
+        where table_schema = #{tableSchema}
+          and table_name = #{tableName};
+    </select>
+
+</mapper>

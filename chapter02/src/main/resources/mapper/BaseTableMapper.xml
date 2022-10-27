@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.mapper.BaseTableMapper">
+    <resultMap id="BaseTableResultMap" type="com.example.springbootdemo.entity.BaseTable">
+        <result column="varchar1" jdbcType="VARCHAR" property="varchar1"/>
+        <result column="varchar2" jdbcType="VARCHAR" property="varchar2"/>
+        <result column="varchar3" jdbcType="VARCHAR" property="varchar3"/>
+        <result column="varchar4" jdbcType="VARCHAR" property="varchar4"/>
+        <result column="varchar5" jdbcType="VARCHAR" property="varchar5"/>
+        <result column="int1" jdbcType="INTEGER" property="int1"/>
+        <result column="int2" jdbcType="INTEGER" property="int2"/>
+        <result column="int3" jdbcType="INTEGER" property="int3"/>
+        <result column="int4" jdbcType="INTEGER" property="int4"/>
+        <result column="int5" jdbcType="INTEGER" property="int5"/>
+    </resultMap>
+
+    <select id="selectOne" parameterType="map" resultType="com.example.springbootdemo.entity.BaseTable">
+        select
+        <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="varchar1 != null">
+                ${varchar1} as varchar1,
+            </if>
+            <if test="varchar2 != null">
+                ${varchar2} as varchar2,
+            </if>
+            <if test="varchar3 != null">
+                ${varchar3} as varchar3,
+            </if>
+            <if test="varchar4 != null">
+                ${varchar4} as varchar4,
+            </if>
+            <if test="varchar5 != null">
+                ${varchar5} as varchar5,
+            </if>
+            <if test="int1 != null">
+                ${int1} as 'int1',
+            </if>
+            <if test="int2 != null">
+                ${int2} as 'int2',
+            </if>
+            <if test="int3 != null">
+                ${int3} as 'int3',
+            </if>
+            <if test="int4 != null">
+                ${int4} as 'int4',
+            </if>
+            <if test="int5 != null">
+                ${int5} as 'int5',
+            </if>
+        </trim>
+        from ${tableName}
+        where id=#{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectAll" parameterType="map" resultMap="BaseTableResultMap">
+        select
+        <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="varchar1 != null">
+                ${varchar1} as varchar1,
+            </if>
+            <if test="varchar2 != null">
+                ${varchar2} as varchar2,
+            </if>
+            <if test="varchar3 != null">
+                ${varchar3} as varchar3,
+            </if>
+            <if test="varchar4 != null">
+                ${varchar4} as varchar4,
+            </if>
+            <if test="varchar5 != null">
+                ${varchar5} as varchar5,
+            </if>
+            <if test="int1 != null">
+                ${int1} as 'int1',
+            </if>
+            <if test="int2 != null">
+                ${int2} as 'int2',
+            </if>
+            <if test="int3 != null">
+                ${int3} as 'int3',
+            </if>
+            <if test="int4 != null">
+                ${int4} as 'int4',
+            </if>
+            <if test="int5 != null">
+                ${int5} as 'int5',
+            </if>
+        </trim>
+        from ${tableName}
+    </select>
+
+    <insert id="insertOne" parameterType="map">
+        insert into ${tableName}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="varchar1 != null">
+                ${varchar1},
+            </if>
+            <if test="varchar2 != null">
+                ${varchar2},
+            </if>
+            <if test="varchar3 != null">
+                ${varchar3},
+            </if>
+            <if test="varchar4 != null">
+                ${varchar4},
+            </if>
+            <if test="varchar5 != null">
+                ${varchar5},
+            </if>
+            <if test="int1 != null">
+                ${int1},
+            </if>
+            <if test="int2 != null">
+                ${int2},
+            </if>
+            <if test="int3 != null">
+                ${int3},
+            </if>
+            <if test="int4 != null">
+                ${int4},
+            </if>
+            <if test="int5 != null">
+                ${int5},
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="varchar1 != null">
+                #{varchar1value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar2 != null">
+                #{varchar2value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar3 != null">
+                #{varchar3value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar4 != null">
+                #{varchar4value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar5 != null">
+                #{varchar5value,jdbcType=VARCHAR},
+            </if>
+            <if test="int1 != null">
+                #{int1value,jdbcType=INTEGER},
+            </if>
+            <if test="int2 != null">
+                #{int2value,jdbcType=INTEGER},
+            </if>
+            <if test="int3 != null">
+                #{int3value,jdbcType=INTEGER},
+            </if>
+            <if test="int4 != null">
+                #{int4value,jdbcType=INTEGER},
+            </if>
+            <if test="int5 != null">
+                #{int5value,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateOne" parameterType="map">
+        update ${tableName}
+        set
+        <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="varchar1 != null">
+                ${varchar1}=#{varchar1value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar2 != null">
+                ${varchar2}=#{varchar2value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar3 != null">
+                ${varchar3}=#{varchar3value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar4 != null">
+                ${varchar4}=#{varchar4value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar5 != null">
+                ${varchar5}=#{varchar5value,jdbcType=VARCHAR},
+            </if>
+            <if test="int1 != null">
+                ${int1}=#{int1value,jdbcType=INTEGER},
+            </if>
+            <if test="int2 != null">
+                ${int2}=#{int2value,jdbcType=INTEGER},
+            </if>
+            <if test="int3 != null">
+                ${int3}=#{int3value,jdbcType=INTEGER},
+            </if>
+            <if test="int4 != null">
+                ${int4}=#{int4value,jdbcType=INTEGER},
+            </if>
+            <if test="int5 != null">
+                ${int5}=#{int5value,jdbcType=INTEGER},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteOne" parameterType="map">
+        delete
+        from ${tableName}
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>
