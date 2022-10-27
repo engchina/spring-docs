@@ -155,6 +155,7 @@ public class MainController {
             for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
                 String fieldName = entry.getKey();
                 Object key = entry.getValue();
+                log.info("fieldName:" + fieldName);
                 Field field = baseTableClass.getDeclaredField(fieldName);
                 field.setAccessible(true);
                 Object oValue = field.get(baseTable);
