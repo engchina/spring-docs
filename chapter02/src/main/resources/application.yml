@@ -3,9 +3,9 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      username: root
-      password: oracle
-      jdbc-url: jdbc:mysql://${MYSQL_HOST:192.168.31.8}:3306/mysql
+      username: ${MYSQL_USERNAME:root}
+      password: ${MYSQL_PASSWORD:oracle}
+      jdbc-url: ${MYSQL_URL:jdbc:mysql://192.168.31.8:3306/mysql}?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
       auto-commit: false
       connection-test-query: SELECT 1
 logging:

@@ -2,21 +2,96 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootdemo.mapper.BaseTableMapper">
     <resultMap id="BaseTableResultMap" type="com.example.springbootdemo.entity.BaseTable">
+        <result column="char1" jdbcType="CHAR" property="char1"/>
+        <result column="char2" jdbcType="CHAR" property="char2"/>
+        <result column="char3" jdbcType="CHAR" property="char3"/>
+        <result column="char4" jdbcType="CHAR" property="char4"/>
+        <result column="char5" jdbcType="CHAR" property="char5"/>
         <result column="varchar1" jdbcType="VARCHAR" property="varchar1"/>
         <result column="varchar2" jdbcType="VARCHAR" property="varchar2"/>
         <result column="varchar3" jdbcType="VARCHAR" property="varchar3"/>
         <result column="varchar4" jdbcType="VARCHAR" property="varchar4"/>
         <result column="varchar5" jdbcType="VARCHAR" property="varchar5"/>
+        <result column="varchar6" jdbcType="VARCHAR" property="varchar6"/>
+        <result column="varchar7" jdbcType="VARCHAR" property="varchar7"/>
+        <result column="varchar8" jdbcType="VARCHAR" property="varchar8"/>
+        <result column="varchar9" jdbcType="VARCHAR" property="varchar9"/>
+        <result column="varchar10" jdbcType="VARCHAR" property="varchar10"/>
+        <result column="varchar11" jdbcType="VARCHAR" property="varchar11"/>
+        <result column="varchar12" jdbcType="VARCHAR" property="varchar12"/>
+        <result column="varchar13" jdbcType="VARCHAR" property="varchar13"/>
+        <result column="varchar14" jdbcType="VARCHAR" property="varchar14"/>
+        <result column="varchar15" jdbcType="VARCHAR" property="varchar15"/>
+        <result column="varchar16" jdbcType="VARCHAR" property="varchar16"/>
+        <result column="varchar17" jdbcType="VARCHAR" property="varchar17"/>
+        <result column="varchar18" jdbcType="VARCHAR" property="varchar18"/>
+        <result column="varchar19" jdbcType="VARCHAR" property="varchar19"/>
+        <result column="varchar20" jdbcType="VARCHAR" property="varchar20"/>
+        <result column="text1" jdbcType="VARCHAR" property="text1"/>
+        <result column="text2" jdbcType="VARCHAR" property="text2"/>
+        <result column="text3" jdbcType="VARCHAR" property="text3"/>
+        <result column="text4" jdbcType="VARCHAR" property="text4"/>
+        <result column="text5" jdbcType="VARCHAR" property="text5"/>
         <result column="int1" jdbcType="INTEGER" property="int1"/>
         <result column="int2" jdbcType="INTEGER" property="int2"/>
         <result column="int3" jdbcType="INTEGER" property="int3"/>
         <result column="int4" jdbcType="INTEGER" property="int4"/>
         <result column="int5" jdbcType="INTEGER" property="int5"/>
+        <result column="int6" jdbcType="INTEGER" property="int6"/>
+        <result column="int7" jdbcType="INTEGER" property="int7"/>
+        <result column="int8" jdbcType="INTEGER" property="int8"/>
+        <result column="int9" jdbcType="INTEGER" property="int9"/>
+        <result column="int10" jdbcType="INTEGER" property="int10"/>
+        <result column="int11" jdbcType="INTEGER" property="int11"/>
+        <result column="int12" jdbcType="INTEGER" property="int12"/>
+        <result column="int13" jdbcType="INTEGER" property="int13"/>
+        <result column="int14" jdbcType="INTEGER" property="int14"/>
+        <result column="int15" jdbcType="INTEGER" property="int15"/>
+        <result column="int16" jdbcType="INTEGER" property="int16"/>
+        <result column="int17" jdbcType="INTEGER" property="int17"/>
+        <result column="int18" jdbcType="INTEGER" property="int18"/>
+        <result column="int19" jdbcType="INTEGER" property="int19"/>
+        <result column="int20" jdbcType="INTEGER" property="int20"/>
+        <result column="float1" jdbcType="FLOAT" property="float1"/>
+        <result column="float2" jdbcType="FLOAT" property="float2"/>
+        <result column="float3" jdbcType="FLOAT" property="float3"/>
+        <result column="float4" jdbcType="FLOAT" property="float4"/>
+        <result column="float5" jdbcType="FLOAT" property="float5"/>
+        <result column="double1" jdbcType="DOUBLE" property="double1"/>
+        <result column="double2" jdbcType="DOUBLE" property="double2"/>
+        <result column="double3" jdbcType="DOUBLE" property="double3"/>
+        <result column="double4" jdbcType="DOUBLE" property="double4"/>
+        <result column="double5" jdbcType="DOUBLE" property="double5"/>
+        <result column="date1" jdbcType="DATE" property="date1"/>
+        <result column="date2" jdbcType="DATE" property="date2"/>
+        <result column="date3" jdbcType="DATE" property="date3"/>
+        <result column="date4" jdbcType="DATE" property="date4"/>
+        <result column="date5" jdbcType="DATE" property="date5"/>
+        <result column="timestamp1" jdbcType="TIMESTAMP" property="timestamp1"/>
+        <result column="timestamp2" jdbcType="TIMESTAMP" property="timestamp2"/>
+        <result column="timestamp3" jdbcType="TIMESTAMP" property="timestamp3"/>
+        <result column="timestamp4" jdbcType="TIMESTAMP" property="timestamp4"/>
+        <result column="timestamp5" jdbcType="TIMESTAMP" property="timestamp5"/>
     </resultMap>
 
     <select id="selectOne" parameterType="map" resultType="com.example.springbootdemo.entity.BaseTable">
         select
         <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="char1 != null">
+                ${char1} as char1,
+            </if>
+            <if test="char2 != null">
+                ${char2} as char2,
+            </if>
+            <if test="char3 != null">
+                ${char3} as char3,
+            </if>
+            <if test="char4 != null">
+                ${char4} as char4,
+            </if>
+            <if test="char5 != null">
+                ${char5} as char5,
+            </if>
             <if test="varchar1 != null">
                 ${varchar1} as varchar1,
             </if>
@@ -32,6 +107,66 @@
             <if test="varchar5 != null">
                 ${varchar5} as varchar5,
             </if>
+            <if test="varchar6 != null">
+                ${varchar6} as varchar6,
+            </if>
+            <if test="varchar7 != null">
+                ${varchar7} as varchar7,
+            </if>
+            <if test="varchar8 != null">
+                ${varchar8} as varchar8,
+            </if>
+            <if test="varchar9 != null">
+                ${varchar9} as varchar9,
+            </if>
+            <if test="varchar10 != null">
+                ${varchar10} as varchar10,
+            </if>
+            <if test="varchar11 != null">
+                ${varchar11} as varchar11,
+            </if>
+            <if test="varchar12 != null">
+                ${varchar12} as varchar12,
+            </if>
+            <if test="varchar13 != null">
+                ${varchar13} as varchar13,
+            </if>
+            <if test="varchar14 != null">
+                ${varchar14} as varchar14,
+            </if>
+            <if test="varchar15 != null">
+                ${varchar15} as varchar15,
+            </if>
+            <if test="varchar16 != null">
+                ${varchar16} as varchar16,
+            </if>
+            <if test="varchar17 != null">
+                ${varchar17} as varchar17,
+            </if>
+            <if test="varchar18 != null">
+                ${varchar18} as varchar18,
+            </if>
+            <if test="varchar19 != null">
+                ${varchar19} as varchar19,
+            </if>
+            <if test="varchar20 != null">
+                ${varchar20} as varchar20,
+            </if>
+            <if test="text1 != null">
+                ${text1} as text1,
+            </if>
+            <if test="text2 != null">
+                ${text2} as text2,
+            </if>
+            <if test="text3 != null">
+                ${text3} as text3,
+            </if>
+            <if test="text4 != null">
+                ${text4} as text4,
+            </if>
+            <if test="text5 != null">
+                ${text5} as text5,
+            </if>
             <if test="int1 != null">
                 ${int1} as 'int1',
             </if>
@@ -46,6 +181,111 @@
             </if>
             <if test="int5 != null">
                 ${int5} as 'int5',
+            </if>
+            <if test="int6 != null">
+                ${int6} as 'int6',
+            </if>
+            <if test="int7 != null">
+                ${int7} as 'int7',
+            </if>
+            <if test="int8 != null">
+                ${int8} as 'int8',
+            </if>
+            <if test="int9 != null">
+                ${int9} as 'int9',
+            </if>
+            <if test="int10 != null">
+                ${int10} as 'int10',
+            </if>
+            <if test="int11 != null">
+                ${int11} as 'int11',
+            </if>
+            <if test="int12 != null">
+                ${int12} as 'int12',
+            </if>
+            <if test="int13 != null">
+                ${int13} as 'int13',
+            </if>
+            <if test="int14 != null">
+                ${int14} as 'int14',
+            </if>
+            <if test="int15 != null">
+                ${int15} as 'int15',
+            </if>
+            <if test="int16 != null">
+                ${int16} as 'int16',
+            </if>
+            <if test="int17 != null">
+                ${int17} as 'int17',
+            </if>
+            <if test="int18 != null">
+                ${int18} as 'int18',
+            </if>
+            <if test="int19 != null">
+                ${int19} as 'int19',
+            </if>
+            <if test="int20 != null">
+                ${int20} as 'int20',
+            </if>
+            <if test="float1 != null">
+                ${float1} as 'float1',
+            </if>
+            <if test="float2 != null">
+                ${float2} as 'float2',
+            </if>
+            <if test="float3 != null">
+                ${float3} as 'float3',
+            </if>
+            <if test="float4 != null">
+                ${float4} as 'float5',
+            </if>
+            <if test="float5 != null">
+                ${float5} as 'float5',
+            </if>
+            <if test="double1 != null">
+                ${double1} as 'double1',
+            </if>
+            <if test="double2 != null">
+                ${double2} as 'double2',
+            </if>
+            <if test="double3 != null">
+                ${double3} as 'double3',
+            </if>
+            <if test="double4 != null">
+                ${double4} as 'double4',
+            </if>
+            <if test="double5 != null">
+                ${double5} as 'double5',
+            </if>
+            <if test="date1 != null">
+                ${date1} as 'date1',
+            </if>
+            <if test="date2 != null">
+                ${date2} as 'date2',
+            </if>
+            <if test="date3 != null">
+                ${date3} as 'date3',
+            </if>
+            <if test="date4 != null">
+                ${date4} as 'date4',
+            </if>
+            <if test="date5 != null">
+                ${date5} as 'date5',
+            </if>
+            <if test="timestamp1 != null">
+                ${timestamp1} as 'timestamp1',
+            </if>
+            <if test="timestamp2 != null">
+                ${timestamp2} as 'timestamp2',
+            </if>
+            <if test="timestamp3 != null">
+                ${timestamp3} as 'timestamp3',
+            </if>
+            <if test="timestamp4 != null">
+                ${timestamp4} as 'timestamp4',
+            </if>
+            <if test="timestamp5 != null">
+                ${timestamp5} as 'timestamp5',
             </if>
         </trim>
         from ${tableName}
@@ -55,6 +295,21 @@
     <select id="selectAll" parameterType="map" resultMap="BaseTableResultMap">
         select
         <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="char1 != null">
+                ${char1} as char1,
+            </if>
+            <if test="char2 != null">
+                ${char2} as char2,
+            </if>
+            <if test="char3 != null">
+                ${char3} as char3,
+            </if>
+            <if test="char4 != null">
+                ${char4} as char4,
+            </if>
+            <if test="char5 != null">
+                ${char5} as char5,
+            </if>
             <if test="varchar1 != null">
                 ${varchar1} as varchar1,
             </if>
@@ -69,6 +324,66 @@
             </if>
             <if test="varchar5 != null">
                 ${varchar5} as varchar5,
+            </if>
+            <if test="varchar6 != null">
+                ${varchar6} as varchar6,
+            </if>
+            <if test="varchar7 != null">
+                ${varchar7} as varchar7,
+            </if>
+            <if test="varchar8 != null">
+                ${varchar8} as varchar8,
+            </if>
+            <if test="varchar9 != null">
+                ${varchar9} as varchar9,
+            </if>
+            <if test="varchar10 != null">
+                ${varchar10} as varchar10,
+            </if>
+            <if test="varchar11 != null">
+                ${varchar11} as varchar11,
+            </if>
+            <if test="varchar12 != null">
+                ${varchar12} as varchar12,
+            </if>
+            <if test="varchar13 != null">
+                ${varchar13} as varchar13,
+            </if>
+            <if test="varchar14 != null">
+                ${varchar14} as varchar14,
+            </if>
+            <if test="varchar15 != null">
+                ${varchar15} as varchar15,
+            </if>
+            <if test="varchar16 != null">
+                ${varchar16} as varchar16,
+            </if>
+            <if test="varchar17 != null">
+                ${varchar17} as varchar17,
+            </if>
+            <if test="varchar18 != null">
+                ${varchar18} as varchar18,
+            </if>
+            <if test="varchar19 != null">
+                ${varchar19} as varchar19,
+            </if>
+            <if test="varchar20 != null">
+                ${varchar20} as varchar20,
+            </if>
+            <if test="text1 != null">
+                ${text1} as text1,
+            </if>
+            <if test="text2 != null">
+                ${text2} as text2,
+            </if>
+            <if test="text3 != null">
+                ${text3} as text3,
+            </if>
+            <if test="text4 != null">
+                ${text4} as text4,
+            </if>
+            <if test="text5 != null">
+                ${text5} as text5,
             </if>
             <if test="int1 != null">
                 ${int1} as 'int1',
@@ -85,6 +400,117 @@
             <if test="int5 != null">
                 ${int5} as 'int5',
             </if>
+            <if test="int6 != null">
+                ${int6} as 'int6',
+            </if>
+            <if test="int7 != null">
+                ${int7} as 'int7',
+            </if>
+            <if test="int8 != null">
+                ${int8} as 'int8',
+            </if>
+            <if test="int9 != null">
+                ${int9} as 'int9',
+            </if>
+            <if test="int10 != null">
+                ${int10} as 'int10',
+            </if>
+            <if test="int11 != null">
+                ${int11} as 'int11',
+            </if>
+            <if test="int12 != null">
+                ${int12} as 'int12',
+            </if>
+            <if test="int13 != null">
+                ${int13} as 'int13',
+            </if>
+            <if test="int14 != null">
+                ${int14} as 'int14',
+            </if>
+            <if test="int15 != null">
+                ${int15} as 'int15',
+            </if>
+            <if test="int16 != null">
+                ${int16} as 'int16',
+            </if>
+            <if test="int17 != null">
+                ${int17} as 'int17',
+            </if>
+            <if test="int18 != null">
+                ${int18} as 'int18',
+            </if>
+            <if test="int19 != null">
+                ${int19} as 'int19',
+            </if>
+            <if test="int20 != null">
+                ${int20} as 'int20',
+            </if>
+            <if test="float1 != null">
+                ${float1} as 'float1',
+            </if>
+            <if test="float1 != null">
+                ${float1} as 'float1',
+            </if>
+            <if test="float2 != null">
+                ${float2} as 'float2',
+            </if>
+            <if test="float3 != null">
+                ${float3} as 'float3',
+            </if>
+            <if test="float4 != null">
+                ${float4} as 'float5',
+            </if>
+            <if test="float5 != null">
+                ${float5} as 'float5',
+            </if>
+            <if test="double1 != null">
+                ${double1} as 'double1',
+            </if>
+            <if test="double2 != null">
+                ${double2} as 'double2',
+            </if>
+            <if test="double3 != null">
+                ${double3} as 'double3',
+            </if>
+            <if test="double4 != null">
+                ${double4} as 'double4',
+            </if>
+            <if test="double5 != null">
+                ${double5} as 'double5',
+            </if>
+            <if test="date1 != null">
+                ${date1} as 'date1',
+            </if>
+            <if test="date1 != null">
+                ${date1} as 'date1',
+            </if>
+            <if test="date2 != null">
+                ${date2} as 'date2',
+            </if>
+            <if test="date3 != null">
+                ${date3} as 'date3',
+            </if>
+            <if test="date4 != null">
+                ${date4} as 'date4',
+            </if>
+            <if test="date5 != null">
+                ${date5} as 'date5',
+            </if>
+            <if test="timestamp1 != null">
+                ${timestamp1} as 'timestamp1',
+            </if>
+            <if test="timestamp2 != null">
+                ${timestamp2} as 'timestamp2',
+            </if>
+            <if test="timestamp3 != null">
+                ${timestamp3} as 'timestamp3',
+            </if>
+            <if test="timestamp4 != null">
+                ${timestamp4} as 'timestamp4',
+            </if>
+            <if test="timestamp5 != null">
+                ${timestamp5} as 'timestamp5',
+            </if>
         </trim>
         from ${tableName}
     </select>
@@ -92,6 +518,21 @@
     <insert id="insertOne" parameterType="map">
         insert into ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="char1 != null">
+                ${char1},
+            </if>
+            <if test="char2 != null">
+                ${char2},
+            </if>
+            <if test="char3 != null">
+                ${char3},
+            </if>
+            <if test="char4 != null">
+                ${char4},
+            </if>
+            <if test="char5 != null">
+                ${char5},
+            </if>
             <if test="varchar1 != null">
                 ${varchar1},
             </if>
@@ -106,6 +547,66 @@
             </if>
             <if test="varchar5 != null">
                 ${varchar5},
+            </if>
+            <if test="varchar6 != null">
+                ${varchar6},
+            </if>
+            <if test="varchar7 != null">
+                ${varchar7},
+            </if>
+            <if test="varchar8 != null">
+                ${varchar8},
+            </if>
+            <if test="varchar9 != null">
+                ${varchar9},
+            </if>
+            <if test="varchar10 != null">
+                ${varchar10},
+            </if>
+            <if test="varchar11 != null">
+                ${varchar11},
+            </if>
+            <if test="varchar12 != null">
+                ${varchar12},
+            </if>
+            <if test="varchar13 != null">
+                ${varchar13},
+            </if>
+            <if test="varchar14 != null">
+                ${varchar14},
+            </if>
+            <if test="varchar15 != null">
+                ${varchar15},
+            </if>
+            <if test="varchar16 != null">
+                ${varchar16},
+            </if>
+            <if test="varchar17 != null">
+                ${varchar17},
+            </if>
+            <if test="varchar18 != null">
+                ${varchar18},
+            </if>
+            <if test="varchar19 != null">
+                ${varchar19},
+            </if>
+            <if test="varchar20 != null">
+                ${varchar20},
+            </if>
+            <if test="text1 != null">
+                ${text1},
+            </if>
+            <if test="text2 != null">
+                ${text2},
+            </if>
+            <if test="text3 != null">
+                ${text3},
+            </if>
+            <if test="text4 != null">
+                ${text4},
+            </if>
+            <if test="text5 != null">
+                ${text5},
             </if>
             <if test="int1 != null">
                 ${int1},
@@ -122,9 +623,129 @@
             <if test="int5 != null">
                 ${int5},
             </if>
+            <if test="int6 != null">
+                ${int6},
+            </if>
+            <if test="int7 != null">
+                ${int7},
+            </if>
+            <if test="int8 != null">
+                ${int8},
+            </if>
+            <if test="int9 != null">
+                ${int9},
+            </if>
+            <if test="int10 != null">
+                ${int10},
+            </if>
+            <if test="int11 != null">
+                ${int11},
+            </if>
+            <if test="int12 != null">
+                ${int12},
+            </if>
+            <if test="int13 != null">
+                ${int13},
+            </if>
+            <if test="int14 != null">
+                ${int14},
+            </if>
+            <if test="int15 != null">
+                ${int15},
+            </if>
+            <if test="int16 != null">
+                ${int16},
+            </if>
+            <if test="int17 != null">
+                ${int17},
+            </if>
+            <if test="int18 != null">
+                ${int18},
+            </if>
+            <if test="int19 != null">
+                ${int19},
+            </if>
+            <if test="int20 != null">
+                ${int20},
+            </if>
+            <if test="float1 != null">
+                ${float1},
+            </if>
+            <if test="float2 != null">
+                ${float2},
+            </if>
+            <if test="float3 != null">
+                ${float3},
+            </if>
+            <if test="float4 != null">
+                ${float4},
+            </if>
+            <if test="float5 != null">
+                ${float5},
+            </if>
+            <if test="double1 != null">
+                ${double1},
+            </if>
+            <if test="double2 != null">
+                ${double2},
+            </if>
+            <if test="double3 != null">
+                ${double4},
+            </if>
+            <if test="double4 != null">
+                ${double5},
+            </if>
+            <if test="double5 != null">
+                ${double5},
+            </if>
+            <if test="date1 != null">
+                ${date1},
+            </if>
+            <if test="date2 != null">
+                ${date2},
+            </if>
+            <if test="date3 != null">
+                ${date3},
+            </if>
+            <if test="date4 != null">
+                ${date4},
+            </if>
+            <if test="date5 != null">
+                ${date5},
+            </if>
+            <if test="timestamp1 != null">
+                ${timestamp1},
+            </if>
+            <if test="timestamp2 != null">
+                ${timestamp2},
+            </if>
+            <if test="timestamp3 != null">
+                ${timestamp3},
+            </if>
+            <if test="timestamp4 != null">
+                ${timestamp4},
+            </if>
+            <if test="timestamp5 != null">
+                ${timestamp5},
+            </if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="char1 != null">
+                #{char1value,jdbcType=CHAR},
+            </if>
+            <if test="char2 != null">
+                #{char2value,jdbcType=CHAR},
+            </if>
+            <if test="char3 != null">
+                #{char3value,jdbcType=CHAR},
+            </if>
+            <if test="char4 != null">
+                #{char4value,jdbcType=CHAR},
+            </if>
+            <if test="char5 != null">
+                #{char5value,jdbcType=CHAR},
+            </if>
             <if test="varchar1 != null">
                 #{varchar1value,jdbcType=VARCHAR},
             </if>
@@ -139,6 +760,66 @@
             </if>
             <if test="varchar5 != null">
                 #{varchar5value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar6 != null">
+                #{varchar6value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar7 != null">
+                #{varchar7value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar8 != null">
+                #{varchar8value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar9 != null">
+                #{varchar9value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar10 != null">
+                #{varchar10value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar11 != null">
+                #{varchar11value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar12 != null">
+                #{varchar12value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar13 != null">
+                #{varchar13value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar14 != null">
+                #{varchar14value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar15 != null">
+                #{varchar15value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar16 != null">
+                #{varchar16value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar17 != null">
+                #{varchar17value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar18 != null">
+                #{varchar18value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar19 != null">
+                #{varchar19value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar20 != null">
+                #{varchar20value,jdbcType=VARCHAR},
+            </if>
+            <if test="text1 != null">
+                #{text1value,jdbcType=VARCHAR},
+            </if>
+            <if test="text2 != null">
+                #{text2value,jdbcType=VARCHAR},
+            </if>
+            <if test="text3 != null">
+                #{text3value,jdbcType=VARCHAR},
+            </if>
+            <if test="text4 != null">
+                #{text4value,jdbcType=VARCHAR},
+            </if>
+            <if test="text5 != null">
+                #{text5value,jdbcType=VARCHAR},
             </if>
             <if test="int1 != null">
                 #{int1value,jdbcType=INTEGER},
@@ -155,6 +836,111 @@
             <if test="int5 != null">
                 #{int5value,jdbcType=INTEGER},
             </if>
+            <if test="int6 != null">
+                #{int6value,jdbcType=INTEGER},
+            </if>
+            <if test="int7 != null">
+                #{int7value,jdbcType=INTEGER},
+            </if>
+            <if test="int8 != null">
+                #{int8value,jdbcType=INTEGER},
+            </if>
+            <if test="int9 != null">
+                #{int9value,jdbcType=INTEGER},
+            </if>
+            <if test="int10 != null">
+                #{int10value,jdbcType=INTEGER},
+            </if>
+            <if test="int11 != null">
+                #{int11value,jdbcType=INTEGER},
+            </if>
+            <if test="int12 != null">
+                #{int12value,jdbcType=INTEGER},
+            </if>
+            <if test="int13 != null">
+                #{int13value,jdbcType=INTEGER},
+            </if>
+            <if test="int14 != null">
+                #{int14value,jdbcType=INTEGER},
+            </if>
+            <if test="int15 != null">
+                #{int15value,jdbcType=INTEGER},
+            </if>
+            <if test="int16 != null">
+                #{int16value,jdbcType=INTEGER},
+            </if>
+            <if test="int17 != null">
+                #{int17value,jdbcType=INTEGER},
+            </if>
+            <if test="int18 != null">
+                #{int18value,jdbcType=INTEGER},
+            </if>
+            <if test="int19 != null">
+                #{int19value,jdbcType=INTEGER},
+            </if>
+            <if test="int20 != null">
+                #{int20value,jdbcType=INTEGER},
+            </if>
+            <if test="float1 != null">
+                #{float1value,jdbcType=FLOAT},
+            </if>
+            <if test="float2 != null">
+                #{float2value,jdbcType=FLOAT},
+            </if>
+            <if test="float3 != null">
+                #{float3value,jdbcType=FLOAT},
+            </if>
+            <if test="float4 != null">
+                #{float4value,jdbcType=FLOAT},
+            </if>
+            <if test="float5 != null">
+                #{float5value,jdbcType=FLOAT},
+            </if>
+            <if test="double1 != null">
+                #{double1value,jdbcType=DOUBLE},
+            </if>
+            <if test="double2 != null">
+                #{double2value,jdbcType=DOUBLE},
+            </if>
+            <if test="double3 != null">
+                #{double3value,jdbcType=DOUBLE},
+            </if>
+            <if test="double4 != null">
+                #{double4value,jdbcType=DOUBLE},
+            </if>
+            <if test="double5 != null">
+                #{double5value,jdbcType=DOUBLE},
+            </if>
+            <if test="date1 != null">
+                #{date1value,jdbcType=DATE},
+            </if>
+            <if test="date2 != null">
+                #{date2value,jdbcType=DATE},
+            </if>
+            <if test="date3 != null">
+                #{date3value,jdbcType=DATE},
+            </if>
+            <if test="date4 != null">
+                #{date4value,jdbcType=DATE},
+            </if>
+            <if test="date5 != null">
+                #{date5value,jdbcType=DATE},
+            </if>
+            <if test="timestamp1 != null">
+                #{timestamp1value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp2 != null">
+                #{timestamp2value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp3 != null">
+                #{timestamp3value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp4 != null">
+                #{timestamp4value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp5 != null">
+                #{timestamp5value,jdbcType=TIMESTAMP},
+            </if>
         </trim>
     </insert>
 
@@ -162,6 +948,21 @@
         update ${tableName}
         set
         <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="char1 != null">
+                ${char1}=#{char1value,jdbcType=CHAR},
+            </if>
+            <if test="char2 != null">
+                ${char2}=#{char2value,jdbcType=CHAR},
+            </if>
+            <if test="char3 != null">
+                ${char3}=#{char3value,jdbcType=CHAR},
+            </if>
+            <if test="char4 != null">
+                ${char4}=#{char4value,jdbcType=CHAR},
+            </if>
+            <if test="char5 != null">
+                ${char5}=#{char5value,jdbcType=CHAR},
+            </if>
             <if test="varchar1 != null">
                 ${varchar1}=#{varchar1value,jdbcType=VARCHAR},
             </if>
@@ -177,6 +978,66 @@
             <if test="varchar5 != null">
                 ${varchar5}=#{varchar5value,jdbcType=VARCHAR},
             </if>
+            <if test="varchar6 != null">
+                ${varchar6}=#{varchar6value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar7 != null">
+                ${varchar7}=#{varchar7value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar8 != null">
+                ${varchar8}=#{varchar8value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar9 != null">
+                ${varchar9}=#{varchar9value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar10 != null">
+                ${varchar10}=#{varchar10value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar11 != null">
+                ${varchar11}=#{varchar11value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar12 != null">
+                ${varchar12}=#{varchar12value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar13 != null">
+                ${varchar13}=#{varchar13value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar14 != null">
+                ${varchar14}=#{varchar14value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar15 != null">
+                ${varchar15}=#{varchar15value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar16 != null">
+                ${varchar16}=#{varchar16value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar17 != null">
+                ${varchar17}=#{varchar17value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar18 != null">
+                ${varchar18}=#{varchar18value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar19 != null">
+                ${varchar19}=#{varchar19value,jdbcType=VARCHAR},
+            </if>
+            <if test="varchar20 != null">
+                ${varchar20}=#{varchar20value,jdbcType=VARCHAR},
+            </if>
+            <if test="text1 != null">
+                ${text1}=#{text1value,jdbcType=VARCHAR},
+            </if>
+            <if test="text2 != null">
+                ${text2}=#{text2value,jdbcType=VARCHAR},
+            </if>
+            <if test="text3 != null">
+                ${text3}=#{text3value,jdbcType=VARCHAR},
+            </if>
+            <if test="text4 != null">
+                ${text4}=#{text4value,jdbcType=VARCHAR},
+            </if>
+            <if test="text5 != null">
+                ${text5}=#{text5value,jdbcType=VARCHAR},
+            </if>
             <if test="int1 != null">
                 ${int1}=#{int1value,jdbcType=INTEGER},
             </if>
@@ -191,6 +1052,111 @@
             </if>
             <if test="int5 != null">
                 ${int5}=#{int5value,jdbcType=INTEGER},
+            </if>
+            <if test="int6 != null">
+                ${int6}=#{int6value,jdbcType=INTEGER},
+            </if>
+            <if test="int7 != null">
+                ${int7}=#{int7value,jdbcType=INTEGER},
+            </if>
+            <if test="int8 != null">
+                ${int8}=#{int8value,jdbcType=INTEGER},
+            </if>
+            <if test="int9 != null">
+                ${int9}=#{int9value,jdbcType=INTEGER},
+            </if>
+            <if test="int10 != null">
+                ${int10}=#{int10value,jdbcType=INTEGER},
+            </if>
+            <if test="int11 != null">
+                ${int11}=#{int11value,jdbcType=INTEGER},
+            </if>
+            <if test="int12 != null">
+                ${int12}=#{int12value,jdbcType=INTEGER},
+            </if>
+            <if test="int13 != null">
+                ${int13}=#{int13value,jdbcType=INTEGER},
+            </if>
+            <if test="int14 != null">
+                ${int14}=#{int14value,jdbcType=INTEGER},
+            </if>
+            <if test="int15 != null">
+                ${int15}=#{int15value,jdbcType=INTEGER},
+            </if>
+            <if test="int16 != null">
+                ${int16}=#{int16value,jdbcType=INTEGER},
+            </if>
+            <if test="int17 != null">
+                ${int17}=#{int17value,jdbcType=INTEGER},
+            </if>
+            <if test="int18 != null">
+                ${int18}=#{int18value,jdbcType=INTEGER},
+            </if>
+            <if test="int19 != null">
+                ${int19}=#{int19value,jdbcType=INTEGER},
+            </if>
+            <if test="int20 != null">
+                ${int20}=#{int20value,jdbcType=INTEGER},
+            </if>
+            <if test="float1 != null">
+                ${float1}=#{float1value,jdbcType=FLOAT},
+            </if>
+            <if test="float2 != null">
+                ${float2}=#{float2value,jdbcType=FLOAT},
+            </if>
+            <if test="float3 != null">
+                ${float3}=#{float3value,jdbcType=FLOAT},
+            </if>
+            <if test="float4 != null">
+                ${float4}=#{float4value,jdbcType=FLOAT},
+            </if>
+            <if test="float5 != null">
+                ${float5}=#{float5value,jdbcType=FLOAT},
+            </if>
+            <if test="double1 != null">
+                ${double1}=#{double1value,jdbcType=DOUBLE},
+            </if>
+            <if test="double2 != null">
+                ${double2}=#{double2value,jdbcType=DOUBLE},
+            </if>
+            <if test="double3 != null">
+                ${double3}=#{double3value,jdbcType=DOUBLE},
+            </if>
+            <if test="double4 != null">
+                ${double4}=#{double4value,jdbcType=DOUBLE},
+            </if>
+            <if test="double5 != null">
+                ${double5}=#{double5value,jdbcType=DOUBLE},
+            </if>
+            <if test="date1 != null">
+                ${date1}=#{date1value,jdbcType=DATE},
+            </if>
+            <if test="date2 != null">
+                ${date2}=#{date2value,jdbcType=DATE},
+            </if>
+            <if test="date3 != null">
+                ${date3}=#{date3value,jdbcType=DATE},
+            </if>
+            <if test="date4 != null">
+                ${date4}=#{date4value,jdbcType=DATE},
+            </if>
+            <if test="date5 != null">
+                ${date5}=#{date5value,jdbcType=DATE},
+            </if>
+            <if test="timestamp1 != null">
+                ${timestamp1}=#{timestamp1value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp2 != null">
+                ${timestamp2}=#{timestamp2value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp3 != null">
+                ${timestamp3}=#{timestamp3value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp4 != null">
+                ${timestamp4}=#{timestamp4value,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp5 != null">
+                ${timestamp5}=#{timestamp5value,jdbcType=TIMESTAMP},
             </if>
         </trim>
         where id=#{id,jdbcType=VARCHAR}
