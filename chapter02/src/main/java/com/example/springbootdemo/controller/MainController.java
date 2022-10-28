@@ -38,10 +38,12 @@ public class MainController {
         int charCount = 1;
         int varcharCount = 1;
         int textCount = 1;
+        int integerCount = 1;
         int intCount = 1;
         int floatCount = 1;
         int doubleCount = 1;
         int dateCount = 1;
+        int timeCount = 1;
         int timestampCount = 1;
         for (int i = 0; i < tableInfos.size(); i++) {
             TableInfo tableInfo = tableInfos.get(i);
@@ -55,9 +57,12 @@ public class MainController {
             } else if (columnType.contains("text")) {
                 paramMap.put(Strings.concat("text", String.valueOf(textCount)), tableInfo.getColumnName());
                 textCount++;
-            } else if (columnType.contains("int")) {
+            } else if (columnType.contains("tinyint") || columnType.contains("smallint") || columnType.contains("mediumint")) {
                 paramMap.put(Strings.concat("int", String.valueOf(intCount)), tableInfo.getColumnName());
                 intCount++;
+            } else if (columnType.contains("int")) {
+                paramMap.put(Strings.concat("integer", String.valueOf(integerCount)), tableInfo.getColumnName());
+                integerCount++;
             } else if (columnType.contains("float")) {
                 paramMap.put(Strings.concat("float", String.valueOf(floatCount)), tableInfo.getColumnName());
                 floatCount++;
@@ -70,6 +75,9 @@ public class MainController {
             } else if (columnType.contains("timestamp")) {
                 paramMap.put(Strings.concat("timestamp", String.valueOf(timestampCount)), tableInfo.getColumnName());
                 timestampCount++;
+            } else if (columnType.contains("time")) {
+                paramMap.put(Strings.concat("time", String.valueOf(timeCount)), tableInfo.getColumnName());
+                timeCount++;
             }
         }
 
@@ -106,10 +114,12 @@ public class MainController {
         int charCount = 1;
         int varcharCount = 1;
         int textCount = 1;
+        int integerCount = 1;
         int intCount = 1;
         int floatCount = 1;
         int doubleCount = 1;
         int dateCount = 1;
+        int timeCount = 1;
         int timestampCount = 1;
         for (int i = 0; i < tableInfos.size(); i++) {
             TableInfo tableInfo = tableInfos.get(i);
@@ -123,9 +133,12 @@ public class MainController {
             } else if (columnType.contains("text")) {
                 paramMap.put(Strings.concat("text", String.valueOf(textCount)), tableInfo.getColumnName());
                 textCount++;
-            } else if (columnType.contains("int")) {
+            } else if (columnType.contains("tinyint") || columnType.contains("smallint") || columnType.contains("mediumint")) {
                 paramMap.put(Strings.concat("int", String.valueOf(intCount)), tableInfo.getColumnName());
                 intCount++;
+            } else if (columnType.contains("int")) {
+                paramMap.put(Strings.concat("integer", String.valueOf(integerCount)), tableInfo.getColumnName());
+                integerCount++;
             } else if (columnType.contains("float")) {
                 paramMap.put(Strings.concat("float", String.valueOf(floatCount)), tableInfo.getColumnName());
                 floatCount++;
@@ -138,6 +151,9 @@ public class MainController {
             } else if (columnType.contains("timestamp")) {
                 paramMap.put(Strings.concat("timestamp", String.valueOf(timestampCount)), tableInfo.getColumnName());
                 timestampCount++;
+            } else if (columnType.contains("time")) {
+                paramMap.put(Strings.concat("time", String.valueOf(timeCount)), tableInfo.getColumnName());
+                timeCount++;
             }
         }
 
@@ -179,10 +195,12 @@ public class MainController {
         int charCount = 1;
         int varcharCount = 1;
         int textCount = 1;
+        int integerCount = 1;
         int intCount = 1;
         int floatCount = 1;
         int doubleCount = 1;
         int dateCount = 1;
+        int timeCount = 1;
         int timestampCount = 1;
         for (int i = 0; i < tableInfos.size(); i++) {
             TableInfo tableInfo = tableInfos.get(i);
@@ -200,10 +218,14 @@ public class MainController {
                     paramMap.put(Strings.concat("text", String.valueOf(textCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("text", String.valueOf(textCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
                     textCount++;
-                } else if (columnType.contains("int")) {
+                } else if (columnType.contains("tinyint") || columnType.contains("smallint") || columnType.contains("mediumint")) {
                     paramMap.put(Strings.concat("int", String.valueOf(intCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("int", String.valueOf(intCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
                     intCount++;
+                } else if (columnType.contains("int")) {
+                    paramMap.put(Strings.concat("integer", String.valueOf(integerCount)), tableInfo.getColumnName());
+                    paramMap.put(Strings.concat(Strings.concat("integer", String.valueOf(integerCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                    integerCount++;
                 } else if (columnType.contains("float")) {
                     paramMap.put(Strings.concat("float", String.valueOf(floatCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("float", String.valueOf(floatCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
@@ -220,6 +242,10 @@ public class MainController {
                     paramMap.put(Strings.concat("timestamp", String.valueOf(timestampCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("timestamp", String.valueOf(timestampCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
                     timestampCount++;
+                } else if (columnType.contains("time")) {
+                    paramMap.put(Strings.concat("time", String.valueOf(timeCount)), tableInfo.getColumnName());
+                    paramMap.put(Strings.concat(Strings.concat("time", String.valueOf(timeCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                    timeCount++;
                 }
             }
         }
@@ -228,6 +254,80 @@ public class MainController {
         log.info("insertOneResult:" + insertOneResult);
 
         return jsonObject;
+    }
+
+    @PostMapping("/rest/{tableSchema}/{tableName}/bulk")
+    public List<JSONObject> insertBulk(@PathVariable("tableSchema") String tableSchema, @PathVariable("tableName") String tableName, @RequestBody List<JSONObject> jsonObjectList) {
+        for (JSONObject jsonObject : jsonObjectList) {
+            // get tableinfo
+            Map<String, Object> paramMap = new HashMap<>();
+            paramMap.put("tableSchema", tableSchema);
+            paramMap.put("tableName", tableName);
+            List<TableInfo> tableInfos = mainFacade.selectTableInfo(paramMap);
+            log.info("tableInfos:" + tableInfos);
+            int charCount = 1;
+            int varcharCount = 1;
+            int textCount = 1;
+            int integerCount = 1;
+            int intCount = 1;
+            int floatCount = 1;
+            int doubleCount = 1;
+            int dateCount = 1;
+            int timeCount = 1;
+            int timestampCount = 1;
+            for (int i = 0; i < tableInfos.size(); i++) {
+                TableInfo tableInfo = tableInfos.get(i);
+                String columnType = tableInfo.getColumnType();
+                if (jsonObject.get(tableInfo.getColumnName()) != null) {
+                    if (columnType.contains("char")) {
+                        paramMap.put(Strings.concat("char", String.valueOf(charCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("char", String.valueOf(charCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        charCount++;
+                    } else if (columnType.contains("varchar") || columnType.contains("set") || columnType.contains("enum")) {
+                        paramMap.put(Strings.concat("varchar", String.valueOf(varcharCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("varchar", String.valueOf(varcharCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        varcharCount++;
+                    } else if (columnType.contains("text")) {
+                        paramMap.put(Strings.concat("text", String.valueOf(textCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("text", String.valueOf(textCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        textCount++;
+                    } else if (columnType.contains("tinyint") || columnType.contains("smallint") || columnType.contains("mediumint")) {
+                        paramMap.put(Strings.concat("int", String.valueOf(intCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("int", String.valueOf(intCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        intCount++;
+                    } else if (columnType.contains("int")) {
+                        paramMap.put(Strings.concat("integer", String.valueOf(integerCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("integer", String.valueOf(integerCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        integerCount++;
+                    } else if (columnType.contains("float")) {
+                        paramMap.put(Strings.concat("float", String.valueOf(floatCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("float", String.valueOf(floatCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        floatCount++;
+                    } else if (columnType.contains("double")) {
+                        paramMap.put(Strings.concat("double", String.valueOf(doubleCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("double", String.valueOf(doubleCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        doubleCount++;
+                    } else if (columnType.contains("date")) {
+                        paramMap.put(Strings.concat("date", String.valueOf(dateCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("date", String.valueOf(dateCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        dateCount++;
+                    } else if (columnType.contains("timestamp")) {
+                        paramMap.put(Strings.concat("timestamp", String.valueOf(timestampCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("timestamp", String.valueOf(timestampCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        timestampCount++;
+                    } else if (columnType.contains("time")) {
+                        paramMap.put(Strings.concat("time", String.valueOf(timeCount)), tableInfo.getColumnName());
+                        paramMap.put(Strings.concat(Strings.concat("time", String.valueOf(timeCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                        timeCount++;
+                    }
+                }
+            }
+
+            Integer insertOneResult = mainFacade.insertOne(paramMap);
+            log.info("insertOneResult:" + insertOneResult);
+        }
+
+        return jsonObjectList;
     }
 
     @PutMapping("/rest/{tableSchema}/{tableName}/{id}")
@@ -241,10 +341,12 @@ public class MainController {
         int charCount = 1;
         int varcharCount = 1;
         int textCount = 1;
+        int integerCount = 1;
         int intCount = 1;
         int floatCount = 1;
         int doubleCount = 1;
         int dateCount = 1;
+        int timeCount = 1;
         int timestampCount = 1;
         for (int i = 0; i < tableInfos.size(); i++) {
             TableInfo tableInfo = tableInfos.get(i);
@@ -262,10 +364,14 @@ public class MainController {
                     paramMap.put(Strings.concat("text", String.valueOf(textCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("text", String.valueOf(textCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
                     textCount++;
-                } else if (columnType.contains("int")) {
+                } else if (columnType.contains("tinyint") || columnType.contains("smallint") || columnType.contains("mediumint")) {
                     paramMap.put(Strings.concat("int", String.valueOf(intCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("int", String.valueOf(intCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
                     intCount++;
+                } else if (columnType.contains("int")) {
+                    paramMap.put(Strings.concat("integer", String.valueOf(integerCount)), tableInfo.getColumnName());
+                    paramMap.put(Strings.concat(Strings.concat("integer", String.valueOf(integerCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                    integerCount++;
                 } else if (columnType.contains("float")) {
                     paramMap.put(Strings.concat("float", String.valueOf(floatCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("float", String.valueOf(floatCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
@@ -282,6 +388,10 @@ public class MainController {
                     paramMap.put(Strings.concat("timestamp", String.valueOf(timestampCount)), tableInfo.getColumnName());
                     paramMap.put(Strings.concat(Strings.concat("timestamp", String.valueOf(timestampCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
                     timestampCount++;
+                } else if (columnType.contains("time")) {
+                    paramMap.put(Strings.concat("time", String.valueOf(timeCount)), tableInfo.getColumnName());
+                    paramMap.put(Strings.concat(Strings.concat("time", String.valueOf(timeCount)), "value"), jsonObject.get(tableInfo.getColumnName()));
+                    timeCount++;
                 }
             }
         }
