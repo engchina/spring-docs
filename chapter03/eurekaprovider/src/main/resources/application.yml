@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eureka-client
+    name: eureka-provider
 server:
   port: 8082
 eureka:

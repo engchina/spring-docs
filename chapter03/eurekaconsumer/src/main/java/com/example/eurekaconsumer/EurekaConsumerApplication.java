@@ -1,15 +1,17 @@
-package com.example.eurekaclient;
+package com.example.eurekaconsumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class EurekaclientApplication {
+@EnableFeignClients
+public class EurekaConsumerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaclientApplication.class, args);
+		SpringApplication.run(EurekaConsumerApplication.class, args);
 	}
 
 }

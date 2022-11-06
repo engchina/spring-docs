@@ -1,4 +1,4 @@
-package com.example.eurekaclient.controller;
+package com.example.consulprovider.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
