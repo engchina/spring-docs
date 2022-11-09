@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: consul-consumer
+server:
+  port: 8506
+  cloud:
+    consul:
+      host: 192.168.31.25
+      port: 8500
+      discovery:
+        registry: false
+logging:
+  level:
+    com.example.consulconsumer: DEBUG
