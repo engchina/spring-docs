@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: consul-consumer
+server:
+  port: 8506
+  cloud:
+    consul:
+      host: 192.168.31.25
+      port: 8500
+      discovery:
+        registry: false
+service-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡策略的全限定类名
