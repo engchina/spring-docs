@@ -1,0 +1,50 @@
+server:
+  port: 8221
+spring:
+  application:
+    name: gateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: weight_route1
+          uri: http://weightroute1.phei.com.cn
+          predicates:
+            - name: Path
+              args:
+                name: path
+                regexp: /hello/**
+            - Weight=group1, 2
+            - Query=name
+        - id: weight_route2
+          uri: http://weightroute2.phei.com.cn
+          predicates:
+            - name: Path
+              args:
+                name: path
+                regexp: /hello/**
+            - Weight=group1, 6
+            - Query=name
+        - id: path_route1
+          uri: http://pathroute1.phei.com.cn
+          predicates:
+            - name: Path
+              args:
+                name: path
+                regexp: /test/**
+        - id: path_route2
+          uri: http://pathroute2.phei.com.cn
+          predicates:
+            - name: Path
+              args:
+                name: path
+                regexp: /test/**
+logging:
+  level:
+    root: info
+    org.springframework.cloud.gateway: debug

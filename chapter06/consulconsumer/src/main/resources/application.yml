@@ -1,8 +1,8 @@
+server:
+  port: 8506
 spring:
   application:
     name: consul-consumer
-server:
-  port: 8506
   cloud:
     consul:
       host: 192.168.31.25

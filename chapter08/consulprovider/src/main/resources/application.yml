@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: consul-provider
+  cloud:
+    consul:
+      host: 192.168.31.25
+      port: 8500
+      discovery:
+        service-name: service-provider
+server:
+  port: 8504
+provider:
+  name: provider1

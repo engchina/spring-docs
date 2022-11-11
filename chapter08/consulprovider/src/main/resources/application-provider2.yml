@@ -1,12 +1,13 @@
 server:
-  port: 8506
+  port: 8505
 spring:
   application:
-    name: consul-consumer
+    name: consul-provider
   cloud:
     consul:
       host: 192.168.31.25
       port: 8500
       discovery:
-        registry: false
-
+        service-name: service-provider
+provider:
+  name: provider2
