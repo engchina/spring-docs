@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.springbootsession.mapper.RegionMapper">
+    <resultMap id="RegionResultMap" type="com.oracle.springbootsession.entity.Region">
+        <id column="region_id" jdbcType="VARCHAR" property="regionId"/>
+        <result column="region_name" jdbcType="VARCHAR" property="regionName"/>
+    </resultMap>
+    <sql id="Region_Column_List">
+        region_id
+        , region_name
+    </sql>
+    <select id="selectRegionList" resultMap="RegionResultMap">
+        select
+        <include refid="Region_Column_List"/>
+        from region
+    </select>
+
+    <select id="selectRegionByRegionId" parameterType="string" resultMap="RegionResultMap">
+        select
+        <include refid="Region_Column_List"/>
+        from region
+        where region_id = #{regionId,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertRegion" keyColumn="region_id" keyProperty="regionId"
+            parameterType="com.oracle.springbootsession.entity.Region">
+        insert into region ( region_id
+                           , region_name)
+        values (#{regionId,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateRegionByRegionId" keyColumn="region_id" keyProperty="regionId"
+            parameterType="com.oracle.springbootsession.entity.Region">
+        update region
+        set region_name = #{regionName,jdbcType=VARCHAR}
+        where region_id = #{regionId,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteRegionByRegionId" parameterType="string">
+        delete
+        from region
+        where region_id = #{regionId,jdbcType=VARCHAR}
+    </delete>
+</mapper>

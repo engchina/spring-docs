@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
+<head>
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- 引入 Bootstrap -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>&nbsp;</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <h3>Oracle Cloud Infrastructure リージョン</h3>
+        </div>
+        <div class="col-md-2">
+            <button id="create" type="button" class="btn btn-primary" th:onclick="javascript:window.location.href='/main/regions/goInsert';return false;">新規作成</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <table class="table">
+                <thead>
+                <tr class="success">
+                    <th>
+                        リージョン識別子
+                    </th>
+                    <th>
+                        リージョン名
+                    </th>
+                    <th>
+                        操作
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="region: ${regions}">
+                    <td><a href="#" th:href="'/main/regions/goUpdate/' + ${region.regionId}" th:text="${region.regionId}"></a>
+                    </td>
+                    <td th:text="${region.regionName}"/>
+                    <td>
+                        <button id="delete" type="button" class="btn btn-primary" th:onclick="javascript:window.location.href='/main/regions/doDelete/'+[[${region.regionId}]]; return false;" th:value="${region.regionId}">削除
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function () {
+        // $("button[id=create]").click(function () {
+        //     window.open($(this).val(), "_self");
+        // });
+        // $("button[id=delete]").click(function () {
+        //     $.ajaxSettings.async = false;
+        //     $.ajax({
+        //         url: '/rest/regions/' + $(this).val(),
+        //         type: 'DELETE',
+        //         success: function (result) {
+        //             window.open('/main/regions', "_self");
+        //         }
+        //     });
+        // });
+    });
+    /*]]>*/
+</script>
+<script>
+    window.apmeum || (apmeum = {});
+    apmeum.customerId='807809c1a8b44532b7c8a717d9bb9ea3';
+    apmeum.baseCollectorUrl='https://omc-807809c1a8b44532b7c8a717d9bb9ea3.eum.omc.ocp.oraclecloud.com/APMaaSCollector/external/collector?';
+</script>
+<script async crossorigin="anonymous" src="https://static.oracle.com/cdn/apm/1.54.0/apmeum.js"></script>
+
+</body>
+</html>
