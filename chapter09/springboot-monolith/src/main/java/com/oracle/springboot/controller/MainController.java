@@ -25,7 +25,25 @@ public class MainController {
     public String selectRegionList(Model model) {
         List<Region> regions = mainFacade.selectRegionList();
         model.addAttribute("regions", regions);
+        method1();
         return "regions/list";
+    }
+
+    private String method1(){
+        log.info("###in MainController-method1()###");
+        method2();
+        return "1";
+    }
+
+    private String method2(){
+        log.info("###in MainController-method2()###");
+        method3();
+        return "2";
+    }
+
+    private String method3(){
+        log.info("###in MainController-method3()###");
+        return "method3";
     }
 
     @GetMapping(value = "/regions/goInsert")
