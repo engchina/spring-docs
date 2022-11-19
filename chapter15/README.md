@@ -19,3 +19,8 @@ verify database
 ```
 docker exec -i mysql57 mysql -uroot -poracle -e "select count(1) from chapter15.people"
 ```
+
+select data
+```
+docker exec -i mysql57 mysql -uroot -poracle -e "select * from chapter15.people"
+```

@@ -1,11 +1,14 @@
 package com.example.springbootopentracing.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@EntityScan("com.example.springbootopentracing.entity")
 @Table(name = "people")
 public class People {
 
