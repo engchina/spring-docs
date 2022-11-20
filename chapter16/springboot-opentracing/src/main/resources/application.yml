@@ -1,0 +1,18 @@
+spring.jpa.hibernate.ddl-auto: none
+spring.datasource.url: jdbc:mysql://localhost:3306/chapter15
+spring.datasource.username: root
+spring.datasource.password: oracle
+opentracing:
+  jaeger:
+    enabled: true
+    service-name: monolith-app
+    const-sampler:
+      decision: true
+    probabilistic-sampler:
+      sampling-rate: 1
+    udp-sender:
+      host: localhost
+      port: 6831
+#    http-sender:
+#      url: http://localhost:9411/api/traces
+    log-spans: true
