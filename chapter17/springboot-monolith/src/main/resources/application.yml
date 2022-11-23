@@ -36,8 +36,8 @@ tracing:
   enabled: true
   name: monolith-app
   service: monolith-app
-  data-upload-endpoint: https://aaaac634takpoaaaaaaaaaagay.apm-agt.ap-chuncheon-1.oci.oraclecloud.com
-  private-data-key: Q4SD43Q3VYXSEZKEJ6M6SXVTSOYT53I5
+  data-upload-endpoint: ToDo
+  private-data-key: ToDo
   collect-metrics: true
   collect-resources: true
   log-directory: "/tmp/logs"
