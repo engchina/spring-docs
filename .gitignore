@@ -33,7 +33,5 @@ hs_err_pid*
 **/*.ipr
 
 ### Others
-chapter09/springboot-monolith/id_rsa
-chapter09/springboot-monolith/*.sh
-chapter09/springboot-monolith/.gitignore
-
+**/id_rsa
+**/apm-tracer-log
