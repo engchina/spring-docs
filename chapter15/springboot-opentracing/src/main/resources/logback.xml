@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/> -->
+    <!--<include resource="org/springframework/boot/logging/logback/default.xml"/>-->
+    <!--<include resource="org/springframework/boot/logging/logback/console-appender.xml"/>-->
+
+    <property name="LOG_HOME" value="/tmp/logs"/>
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--<charset>UTF-8</charset>-->
+            <!--<pattern>%d{HH:mm:ss.SSS} %-5level | (%file:%line\) - %msg%n</pattern>-->
+            <pattern>%d{HH:mm:ss} [%thread] %-5level | %logger{10} (%file:%line\) [traceId=%X{traceId} spanId=%X{spanId} sampled=%X{sampled} tenantId=%X{X-MS-TenantId} actorId=%X{X-MS-ActorId}] %msg%n</pattern>
+            <!--<pattern>%d{HH:mm:ss} [%thread] %-5level | %logger{10} (%file:%line\) [traceId=%X{traceId} spanId=%X{spanId} sampled=%X{sampled}] %msg%n</pattern>-->
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<Encoding>UTF-8</Encoding>-->
+        <file>${LOG_HOME}/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/adapter.%d{yyyy-MM-dd}.log.zip
+            </FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!-- <charset>UTF-8</charset> -->
+            <pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} [%thread] %-5level | %logger{10} (%file:%line\) [traceId=%X{traceId} spanId=%X{spanId} sampled=%X{sampled}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ALERT"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <Encoding>UTF-8</Encoding> -->
+        <!-- Output ERROR and WARN logs. -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${LOG_HOME}/app.alert.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/adapter.alert.%d{yyyy-MM-dd}.log.zip
+            </FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!-- <charset>UTF-8</charset> -->
+            <pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} [%thread] %-5level | %logger{10} (%file:%line\) [traceId=%X{traceId} spanId=%X{spanId} sampled=%X{sampled}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="jdbc" level="OFF"/>
+    <logger name="jdbc.sqltiming" level="ERROR"/>
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="com.example.springbootjaeger" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ALERT"/>
+    </root>
+</configuration>

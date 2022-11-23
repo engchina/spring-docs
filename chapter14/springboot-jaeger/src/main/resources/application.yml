@@ -1,0 +1,22 @@
+server:
+  port: 8188
+opentracing:
+  jaeger:
+    enabled: true
+    service-name: springboot-jaeger
+    const-sampler:
+      decision: true
+    probabilistic-sampler:
+      sampling-rate: 1
+    udp-sender:
+      host: localhost
+      port: 6831
+#    http-sender:
+#      url: http://localhost:9411/api/traces
+    log-spans: true
+    reporter:
+      enabled: false
+#logging:
+#  pattern:
+#    console: %d{yyyy-MM-dd HH:mm:ss} - %msg%n
+#    console: [%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint}] [${applicationName}] [${environment}] [%X{traceId:-trade-id}] [%X{companyId:-company-id}] [%X{operatorId:-operator-id}]  %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}

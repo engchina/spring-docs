@@ -18,8 +18,69 @@ spring:
     encoding: utf-8
   jmx:
     enabled: true
+    sleuth:
+      enabled: true
+      propagation:
+        type: OT_TRACER
+      sampler:
+        probability: 1
+
+  main:
+    allow-bean-definition-overriding: true
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
+tracing:
+  enabled: true
+  name: monolith-app
+  service: monolith-app
+  data-upload-endpoint: https://aaaac634takpoaaaaaaaaaagay.apm-agt.ap-chuncheon-1.oci.oraclecloud.com
+  private-data-key: Q4SD43Q3VYXSEZKEJ6M6SXVTSOYT53I5
+  collect-metrics: true
+  collect-resources: true
+  log-directory: "/tmp/logs"
+  sampling:
+    - rule: probabilistic
+      param: 1
+  tags:
+    tag1: true
+    tag2: 1234
+    tag3: "hello"
+  properties:
+    com.oracle.apm.agent.log.level: DEBUG
+    com.oracle.apm.agent.key1: value1
+opentracing:
+  jaeger:
+    enabled: true
+    service-name: monolith-app
+    const-sampler:
+      decision: true
+#    probabilistic-sampler:
+#      sampling-rate: 1
+    udp-sender:
+      host: localhost
+      port: 6831
+#    http-sender:
+#      url: http://localhost:9411/api/traces
+    log-spans: true
+logging:
+  level:
+    root: error
+    com:
+      oracle:
+        apm: debug
+        springboot: info
+    io:
+      jaegertracing: debug
+    jdk:
+      event: error
+    org:
+      apache: error
+      apache.ibatis: info
+      mybatis: error
+      thymeleaf: error
+    sun:
+      rmi: error
+

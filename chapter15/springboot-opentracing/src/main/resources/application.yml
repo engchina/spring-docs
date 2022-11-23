@@ -5,14 +5,16 @@ spring.datasource.password: oracle
 opentracing:
   jaeger:
     enabled: true
-    service-name: monolith-app
+    service-name: customized-tracer
     const-sampler:
-      decision: true
-    probabilistic-sampler:
-      sampling-rate: 1
+      decision: true # decision等于true表示全部上报，decision等于false表示一个也不上报
+#    probabilistic-sampler:
+#      sampling-rate: 1 # 0.1表示设置采用率为10%,1表示设置采用率为100%
+#    rate-limiting-sampler:
+#      max-traces-per-second: 1 # 每秒只采样一个
     udp-sender:
       host: localhost
       port: 6831
 #    http-sender:
 #      url: http://localhost:9411/api/traces
-    log-spans: true
+    log-spans: false

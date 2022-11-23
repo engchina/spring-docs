@@ -1,4 +1,6 @@
 package com.example.springbootjaeger.service;
 
-public class MainService {
+public interface MainService {
+
+    String sayHello();
 }

@@ -1,8 +1,11 @@
-package com.oracle.springbootsession.facade.impl;
+package com.oracle.springboot.facade.impl;
 
-import com.oracle.springbootsession.entity.Region;
-import com.oracle.springbootsession.facade.MainFacade;
-import com.oracle.springbootsession.service.MainService;
+import com.oracle.springboot.annotation.MethodSpan;
+import com.oracle.springboot.entity.Region;
+import com.oracle.springboot.facade.MainFacade;
+import com.oracle.springboot.service.MainService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +14,7 @@ import java.util.List;
 
 @Component
 @Transactional
+@Slf4j
 public class MainFacadeImpl implements MainFacade {
 
     @Resource
@@ -18,6 +22,8 @@ public class MainFacadeImpl implements MainFacade {
 
     @Override
     public List<Region> selectRegionList() {
+        MainFacade mainFacade = (MainFacade)AopContext.currentProxy();
+        mainFacade.dummyMethod1();
         return mainService.selectRegionList();
     }
 
@@ -39,5 +45,29 @@ public class MainFacadeImpl implements MainFacade {
     @Override
     public int deleteRegionByRegionId(String regionId) {
         return mainService.deleteRegionByRegionId(regionId);
+    }
+
+    @Override
+    @MethodSpan
+    public void dummyMethod1() {
+        try {
+            Thread.sleep(1);
+            MainFacade mainFacade = (MainFacade)AopContext.currentProxy();
+            mainFacade.dummyMethod2();
+            log.info("### in MainFacadeImpl.dummyMethod1() ###");
+        } catch (InterruptedException e) {
+            // do nothing
+        }
+    }
+
+    @Override
+    @MethodSpan
+    public void dummyMethod2() {
+        try {
+            Thread.sleep(2);
+            log.info("### in MainFacadeImpl.dummyMethod2() ###");
+        } catch (InterruptedException e) {
+            // do nothing
+        }
     }
 }
