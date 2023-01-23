@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zipkin-server
+#  cloud:
+#    nacos:
+#      discovery:
+#        # 可以配置多个，逗号分隔
+#        server-addr: localhost:8848
+  main:
+    allow-bean-definition-overriding: true
+
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: localhost:5672
+      password: oracle
+      username: oracle
+      queue: zipkin
+
+server:
+  port: 10006
+

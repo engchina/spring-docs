@@ -1,0 +1,27 @@
+server:
+  port: 20001
+#  servlet:
+#    context-path: /coupon-calculation
+
+spring:
+  application:
+    name: coupon-calculator-service
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    sender:
+      type: rabbit
+    rabbitmq:
+      addresses: localhost:5672
+#      host: localhost
+#      port: 5672
+      queue: zipkin
+      username: oracle
+      password: oracle
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:10000/eureka/,http://peer2:10001/eureka/
